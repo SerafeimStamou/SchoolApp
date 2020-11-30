@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolApp", "SchoolApp\SchoolApp.csproj", "{27BB503B-D161-4F92-8BC7-69DF32DB5D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{9C1B2ABD-DEA3-4D34-AFDC-A5B35660622A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27BB503B-D161-4F92-8BC7-69DF32DB5D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27BB503B-D161-4F92-8BC7-69DF32DB5D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27BB503B-D161-4F92-8BC7-69DF32DB5D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27BB503B-D161-4F92-8BC7-69DF32DB5D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C1B2ABD-DEA3-4D34-AFDC-A5B35660622A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1B2ABD-DEA3-4D34-AFDC-A5B35660622A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1B2ABD-DEA3-4D34-AFDC-A5B35660622A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1B2ABD-DEA3-4D34-AFDC-A5B35660622A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CCE9E42-4071-4A21-99E0-E352020CE30D}
+	EndGlobalSection
+EndGlobal

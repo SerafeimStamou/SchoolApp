@@ -1,0 +1,17 @@
+C:\SchoolApp\DataLibrary\bin\Debug\DataLibrary.dll
+C:\SchoolApp\DataLibrary\bin\Debug\DataLibrary.pdb
+C:\SchoolApp\DataLibrary\obj\Debug\DataLibrary.csprojAssemblyReference.cache
+C:\SchoolApp\DataLibrary\obj\Debug\DataLibrary.csproj.CoreCompileInputs.cache
+C:\SchoolApp\DataLibrary\obj\Debug\DataLibrary.dll
+C:\SchoolApp\DataLibrary\obj\Debug\DataLibrary.pdb
+C:\SchoolApp\DataLibrary\bin\Debug\Dapper.dll
+C:\SchoolApp\DataLibrary\bin\Debug\Dapper.xml
+C:\SchoolApp\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
+C:\SchoolApp\DataLibrary\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\SchoolApp\DataLibrary\bin\Debug\System.Security.AccessControl.dll
+C:\SchoolApp\DataLibrary\bin\Debug\System.Security.Permissions.dll
+C:\SchoolApp\DataLibrary\bin\Debug\System.Security.Principal.Windows.dll
+C:\SchoolApp\DataLibrary\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\SchoolApp\DataLibrary\bin\Debug\System.Security.AccessControl.xml
+C:\SchoolApp\DataLibrary\bin\Debug\System.Security.Permissions.xml
+C:\SchoolApp\DataLibrary\bin\Debug\System.Security.Principal.Windows.xml
