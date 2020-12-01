@@ -33,12 +33,10 @@ namespace SchoolApp.Forms
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            AddStudent(FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
+            CreateStudent(FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
                        PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked);
 
             ClearValues();
-
-            MessageBox.Show("Student added successfully");
         }
 
         private void ClearValues()

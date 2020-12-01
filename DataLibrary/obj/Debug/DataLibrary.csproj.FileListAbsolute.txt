@@ -15,3 +15,5 @@ C:\SchoolApp\DataLibrary\bin\Debug\System.Configuration.ConfigurationManager.xml
 C:\SchoolApp\DataLibrary\bin\Debug\System.Security.AccessControl.xml
 C:\SchoolApp\DataLibrary\bin\Debug\System.Security.Permissions.xml
 C:\SchoolApp\DataLibrary\bin\Debug\System.Security.Principal.Windows.xml
+C:\SchoolApp\DataLibrary\bin\Debug\FluentValidation.dll
+C:\SchoolApp\DataLibrary\bin\Debug\FluentValidation.xml

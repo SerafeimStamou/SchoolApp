@@ -20,3 +20,5 @@ C:\SchoolApp\SchoolApp\bin\Debug\System.Security.Principal.Windows.xml
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.csproj.CopyComplete
 C:\SchoolApp\SchoolApp\bin\Debug\DataLibrary.dll
 C:\SchoolApp\SchoolApp\bin\Debug\DataLibrary.pdb
+C:\SchoolApp\SchoolApp\bin\Debug\FluentValidation.dll
+C:\SchoolApp\SchoolApp\bin\Debug\FluentValidation.xml
