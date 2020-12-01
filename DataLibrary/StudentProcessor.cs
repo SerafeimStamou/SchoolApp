@@ -10,7 +10,7 @@ namespace DataLibrary
 {
     public static class StudentProcessor
     {
-        public static void CreateStudent(string firstName, string lastName, string email,
+        public static bool CreateStudent(string firstName, string lastName, string email,
                string phone, DateTime birthDate, bool isSubscribed)
         {
             var student = new Student
@@ -31,6 +31,7 @@ namespace DataLibrary
             {
                 AddStudent(student);
                 MessageBox.Show("Student added successfully");
+                return true;
             }
             else
             {
@@ -38,6 +39,8 @@ namespace DataLibrary
               {
                 MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
               }
+
+                return false;
             }
         }
 

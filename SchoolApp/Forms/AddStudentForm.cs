@@ -33,10 +33,9 @@ namespace SchoolApp.Forms
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            CreateStudent(FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
-                       PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked);
-
-            ClearValues();
+          if(CreateStudent(FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
+                           PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked))
+              ClearValues();
         }
 
         private void ClearValues()
