@@ -3,16 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static DataLibrary.StudentProcessor;
+using static DataLibrary.Helper;
 
 namespace SchoolApp.Forms
 {
     public partial class AddStudentForm : Form
     {
-        Student student;
         public AddStudentForm()
         {
-            InitializeComponent();
-            student = new Student();
+          InitializeComponent();
         }
 
         #region
@@ -25,12 +24,11 @@ namespace SchoolApp.Forms
         #endregion
 
         private void ExitProgram_Click(object sender, EventArgs e) => Application.Exit();
-        
+
         private void MainFormBtn_Click(object sender, EventArgs e)
         {
-            var mainForm = new MainForm();
-            mainForm.Show();
-            this.Hide();
+          var mainForm = new MainForm();
+          LoadForm(mainForm, this);
         }
 
         private void SaveBtn_Click(object sender, EventArgs e) =>

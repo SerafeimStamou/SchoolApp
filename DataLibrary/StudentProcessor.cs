@@ -5,6 +5,7 @@ using SchoolApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static DataLibrary.Helper;
 
 namespace DataLibrary
 {
@@ -15,8 +16,8 @@ namespace DataLibrary
         {
             var student = new Student
             {
-                FirstName = firstName,
-                LastName = lastName,
+                FirstName = InputFormat(firstName),
+                LastName = InputFormat(lastName),
                 Email = email,
                 Phone = phone,
                 BirthDate = birthDate,

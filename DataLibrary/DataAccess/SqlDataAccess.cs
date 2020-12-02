@@ -12,13 +12,13 @@ namespace DataLibrary.DataAccess
     {
       public static string GetConnectionString(string connectionName="School")=> ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
 
-      public static List<T> LoadData<T>(string sql)
-      {
-            using(IDbConnection conn=new SqlConnection(GetConnectionString()))
-            {
+           public static List<T> LoadData<T>(string sql)
+           {
+             using(IDbConnection conn=new SqlConnection(GetConnectionString()))
+             {
                 return conn.Query<T>(sql).ToList();
-            }
-      }
+             }
+           }
 
         public static int SaveData<T>(string sql,T data)
         {
@@ -27,8 +27,6 @@ namespace DataLibrary.DataAccess
                 return conn.Execute(sql, data);
             }
         }
-
-        
 
         public static List<T>  Search<T>(string sql,T data)
         {
