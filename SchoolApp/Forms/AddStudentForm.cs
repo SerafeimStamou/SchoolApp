@@ -8,9 +8,11 @@ namespace SchoolApp.Forms
 {
     public partial class AddStudentForm : Form
     {
+        Student student;
         public AddStudentForm()
         {
             InitializeComponent();
+            student = new Student();
         }
 
         #region
@@ -31,13 +33,12 @@ namespace SchoolApp.Forms
             this.Hide();
         }
 
-        private void SaveBtn_Click(object sender, EventArgs e)
-        {
-          if(CreateStudent(FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
-                           PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked))
-              ClearValues();
-        }
+        private void SaveBtn_Click(object sender, EventArgs e) =>
+            CreateStudent(FirstNameTxtBox.Text,LastNameTxtBox.Text,EmailTxtBox.Text,
+            PhoneTxtBox.Text,BirthDateDTPicker.Value,SubscribeCheckBox.Checked);
 
+        private void ClearValuesBtn_Click(object sender, EventArgs e) => ClearValues();
+       
         private void ClearValues()
         {
             FirstNameTxtBox.Clear();

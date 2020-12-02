@@ -27,5 +27,15 @@ namespace DataLibrary.DataAccess
                 return conn.Execute(sql, data);
             }
         }
+
+        
+
+        public static List<T>  Search<T>(string sql,T data)
+        {
+            using (IDbConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                return conn.Query<T>(sql,data).ToList();
+            }
+        }
     }
 }

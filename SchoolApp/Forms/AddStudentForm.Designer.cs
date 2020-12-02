@@ -43,6 +43,7 @@ namespace SchoolApp.Forms
             this.BirthDateDTPicker = new System.Windows.Forms.DateTimePicker();
             this.SubscribeCheckBox = new System.Windows.Forms.CheckBox();
             this.SaveBtn = new System.Windows.Forms.Button();
+            this.ClearValuesBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitProgram
@@ -149,7 +150,7 @@ namespace SchoolApp.Forms
             // 
             // BirthDateDTPicker
             // 
-            this.BirthDateDTPicker.Location = new System.Drawing.Point(102, 136);
+            this.BirthDateDTPicker.Location = new System.Drawing.Point(112, 136);
             this.BirthDateDTPicker.Name = "BirthDateDTPicker";
             this.BirthDateDTPicker.Size = new System.Drawing.Size(206, 22);
             this.BirthDateDTPicker.TabIndex = 12;
@@ -158,7 +159,7 @@ namespace SchoolApp.Forms
             // SubscribeCheckBox
             // 
             this.SubscribeCheckBox.AutoSize = true;
-            this.SubscribeCheckBox.Location = new System.Drawing.Point(102, 207);
+            this.SubscribeCheckBox.Location = new System.Drawing.Point(112, 208);
             this.SubscribeCheckBox.Name = "SubscribeCheckBox";
             this.SubscribeCheckBox.Size = new System.Drawing.Size(184, 21);
             this.SubscribeCheckBox.TabIndex = 13;
@@ -168,7 +169,7 @@ namespace SchoolApp.Forms
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(345, 283);
+            this.SaveBtn.Location = new System.Drawing.Point(209, 280);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(109, 60);
             this.SaveBtn.TabIndex = 14;
@@ -176,11 +177,22 @@ namespace SchoolApp.Forms
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
+            // ClearValuesBtn
+            // 
+            this.ClearValuesBtn.Location = new System.Drawing.Point(509, 280);
+            this.ClearValuesBtn.Name = "ClearValuesBtn";
+            this.ClearValuesBtn.Size = new System.Drawing.Size(109, 60);
+            this.ClearValuesBtn.TabIndex = 15;
+            this.ClearValuesBtn.Text = "Clear";
+            this.ClearValuesBtn.UseVisualStyleBackColor = true;
+            this.ClearValuesBtn.Click += new System.EventHandler(this.ClearValuesBtn_Click);
+            // 
             // AddStudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ClearValuesBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.SubscribeCheckBox);
             this.Controls.Add(this.BirthDateDTPicker);
@@ -218,5 +230,6 @@ namespace SchoolApp.Forms
         private System.Windows.Forms.DateTimePicker BirthDateDTPicker;
         private System.Windows.Forms.CheckBox SubscribeCheckBox;
         private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button ClearValuesBtn;
     }
 }

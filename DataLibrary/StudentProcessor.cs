@@ -10,7 +10,7 @@ namespace DataLibrary
 {
     public static class StudentProcessor
     {
-        public static bool CreateStudent(string firstName, string lastName, string email,
+        public static void CreateStudent(string firstName, string lastName, string email,
                string phone, DateTime birthDate, bool isSubscribed)
         {
             var student = new Student
@@ -23,31 +23,47 @@ namespace DataLibrary
                 IsSubscribed = isSubscribed
             };
 
+            ModelValidation(student);
+        }
+
+        public static void ModelValidation(Student student)
+        {
             var validator = new StudentValidator();
 
             ValidationResult results = validator.Validate(student);
 
             if (results.IsValid == true)
             {
-                AddStudent(student);
-                MessageBox.Show("Student added successfully");
-                return true;
+                CheckForDuplicates(student);
             }
             else
             {
-              foreach(ValidationFailure failure in results.Errors)
-              {
-                MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
-              }
-
-                return false;
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                  MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
+                }
             }
         }
 
+        public static void CheckForDuplicates(Student student)
+        {
+           var students = SqlDataAccess.Search("SELECT FirstName,LastName FROM Students WHERE FirstName=@FirstName AND LastName=@LastName", student);
+
+            if(students.Count ==0)
+            {
+                AddStudent(student);
+            }
+            else
+            {
+                MessageBox.Show($"There are {students.Count} students with name {student.FirstName} {student.LastName}");
+            }
+        }
         public static int AddStudent(Student student)
         {
             string sql = @"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
                           VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)";
+
+            MessageBox.Show("Student added successfully");
 
             return SqlDataAccess.SaveData(sql, student);
         }
