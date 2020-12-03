@@ -26,5 +26,11 @@ namespace SchoolApp
           var addStudentForm = new AddStudentForm();
           LoadForm(addStudentForm, this);
         }
+
+        private void ViewStudentsBtn_Click(object sender, EventArgs e)
+        {
+            var viewStudentsForm = new ViewStudentsForm();
+            LoadForm(viewStudentsForm, this);
+        }
     }
 }

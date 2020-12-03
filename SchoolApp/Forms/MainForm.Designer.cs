@@ -31,6 +31,7 @@ namespace SchoolApp
         {
             this.ExitProgram = new System.Windows.Forms.Button();
             this.AddStudentBtn = new System.Windows.Forms.Button();
+            this.ViewStudentsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitProgram
@@ -53,11 +54,22 @@ namespace SchoolApp
             this.AddStudentBtn.UseVisualStyleBackColor = true;
             this.AddStudentBtn.Click += new System.EventHandler(this.AddStudentBtn_Click);
             // 
+            // ViewStudentsBtn
+            // 
+            this.ViewStudentsBtn.Location = new System.Drawing.Point(61, 141);
+            this.ViewStudentsBtn.Name = "ViewStudentsBtn";
+            this.ViewStudentsBtn.Size = new System.Drawing.Size(109, 60);
+            this.ViewStudentsBtn.TabIndex = 2;
+            this.ViewStudentsBtn.Text = "View Students";
+            this.ViewStudentsBtn.UseVisualStyleBackColor = true;
+            this.ViewStudentsBtn.Click += new System.EventHandler(this.ViewStudentsBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ViewStudentsBtn);
             this.Controls.Add(this.AddStudentBtn);
             this.Controls.Add(this.ExitProgram);
             this.Name = "MainForm";
@@ -70,6 +82,7 @@ namespace SchoolApp
 
         private System.Windows.Forms.Button ExitProgram;
         private System.Windows.Forms.Button AddStudentBtn;
+        private System.Windows.Forms.Button ViewStudentsBtn;
     }
 }
 

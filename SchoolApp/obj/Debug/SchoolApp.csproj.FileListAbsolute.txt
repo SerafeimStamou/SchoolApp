@@ -22,3 +22,4 @@ C:\SchoolApp\SchoolApp\bin\Debug\DataLibrary.dll
 C:\SchoolApp\SchoolApp\bin\Debug\DataLibrary.pdb
 C:\SchoolApp\SchoolApp\bin\Debug\FluentValidation.dll
 C:\SchoolApp\SchoolApp\bin\Debug\FluentValidation.xml
+C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.ViewStudentsForm.resources

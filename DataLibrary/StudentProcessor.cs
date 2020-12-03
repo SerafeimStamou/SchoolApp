@@ -52,7 +52,7 @@ namespace DataLibrary
 
             if(students.Count ==0)
             {
-                AddStudent(student);
+              AddStudent(student);
             }
             else
             {
@@ -69,6 +69,6 @@ namespace DataLibrary
             return SqlDataAccess.SaveData(sql, student);
         }
 
-        public static List<Student> LoadStudents() => SqlDataAccess.LoadData<Student>("SELECT * FROM Students");
+        public static List<Student> LoadStudents() => SqlDataAccess.LoadData<Student>("SELECT * FROM Students ORDER BY LastName");
     }
 }
