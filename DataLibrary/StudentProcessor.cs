@@ -16,37 +16,38 @@ namespace DataLibrary
         {
             var student = new Student
             {
-                FirstName = InputFormat(firstName),
-                LastName = InputFormat(lastName),
+                FirstName = firstName,
+                LastName =  lastName,
                 Email = email,
                 Phone = phone,
                 BirthDate = birthDate,
                 IsSubscribed = isSubscribed
             };
 
-            ModelValidation(student);
+             StudentValidation(student);
         }
 
-        public static void ModelValidation(Student student)
+        public static void StudentValidation(Student student)
         {
+
             var validator = new StudentValidator();
 
             ValidationResult results = validator.Validate(student);
 
             if (results.IsValid == true)
             {
-                CheckForDuplicates(student);
+                CheckIfStudentExist(student);
             }
             else
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                  MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
+                    MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
                 }
             }
         }
 
-        public static void CheckForDuplicates(Student student)
+        public static void CheckIfStudentExist(Student student)
         {
            var students = SqlDataAccess.Search("SELECT FirstName,LastName FROM Students WHERE FirstName=@FirstName AND LastName=@LastName", student);
 
@@ -61,6 +62,9 @@ namespace DataLibrary
         }
         public static int AddStudent(Student student)
         {
+            student.FirstName = InputFormat(student.FirstName);
+            student.LastName = InputFormat(student.LastName);
+
             string sql = @"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
                           VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)";
 
