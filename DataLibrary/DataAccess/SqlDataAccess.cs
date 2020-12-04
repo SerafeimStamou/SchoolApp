@@ -20,7 +20,7 @@ namespace DataLibrary.DataAccess
              }
            }
 
-        public static int SaveData<T>(string sql,T data)
+        public static int ManipulateData<T>(string sql,T data)
         {
             using (IDbConnection conn = new SqlConnection(GetConnectionString()))
             {

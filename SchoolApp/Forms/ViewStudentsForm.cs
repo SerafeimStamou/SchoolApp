@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using static DataLibrary.Helper;
 using static DataLibrary.StudentProcessor;
+using static DataLibrary.DataAccess.SqlDataAccess;
+using SchoolApp.Models;
 
 namespace SchoolApp.Forms
 {
@@ -10,7 +12,7 @@ namespace SchoolApp.Forms
         public ViewStudentsForm()
         {
           InitializeComponent();
-          StudentsTable.DataSource = LoadStudents();
+          StudentsTable.DataSource = LoadData<Student>("SELECT * FROM Students ORDER BY LastName");
         }
 
         private void MainFormBtn_Click(object sender, EventArgs e)
@@ -21,9 +23,6 @@ namespace SchoolApp.Forms
 
         private void ExitProgram_Click(object sender, EventArgs e) => Application.Exit();
 
-        private void StudentsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void StudentsTable_CellContentClick(object sender, DataGridViewCellEventArgs e){}
     }
 }

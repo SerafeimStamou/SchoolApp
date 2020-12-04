@@ -60,7 +60,7 @@ namespace DataLibrary
                 MessageBox.Show($"There are {students.Count} students with name {student.FirstName} {student.LastName}");
             }
         }
-        public static int AddStudent(Student student)
+        public static void AddStudent(Student student)
         {
             student.FirstName = InputFormat(student.FirstName);
             student.LastName = InputFormat(student.LastName);
@@ -68,11 +68,9 @@ namespace DataLibrary
             string sql = @"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
                           VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)";
 
-            MessageBox.Show("Student added successfully");
+             SqlDataAccess.ManipulateData(sql, student);
 
-            return SqlDataAccess.SaveData(sql, student);
+             MessageBox.Show("Student added successfully");
         }
-
-        public static List<Student> LoadStudents() => SqlDataAccess.LoadData<Student>("SELECT * FROM Students ORDER BY LastName");
     }
 }
