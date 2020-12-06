@@ -4,6 +4,7 @@ using FluentValidation.Results;
 using SchoolApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
 
@@ -11,23 +12,24 @@ namespace DataLibrary
 {
     public static class StudentProcessor
     {
-        public static void CreateStudent(string firstName, string lastName, string email,
-               string phone, DateTime birthDate, bool isSubscribed)
+        public static void CreateStudent(int Id,string firstName, string lastName, string email,
+               string phone, DateTime birthDate, bool isSubscribed,bool isNewEntry)
         {
             var student = new Student
             {
-                FirstName = firstName,
-                LastName =  lastName,
+                ID=Id,
+                FirstName = InputFormat(firstName),
+                LastName =  InputFormat(lastName),
                 Email = email,
                 Phone = phone,
                 BirthDate = birthDate,
                 IsSubscribed = isSubscribed
             };
 
-             StudentValidation(student);
+             StudentValidation(student,isNewEntry);
         }
 
-        public static void StudentValidation(Student student)
+        public static void StudentValidation(Student student,bool isNewEntry)
         {
 
             var validator = new StudentValidator();
@@ -36,7 +38,10 @@ namespace DataLibrary
 
             if (results.IsValid == true)
             {
-                CheckIfStudentExist(student);
+                if (isNewEntry == true)
+                    AddStudent(student);
+                else
+                    EditStudent(student);
             }
             else
             {
@@ -47,30 +52,35 @@ namespace DataLibrary
             }
         }
 
-        public static void CheckIfStudentExist(Student student)
-        {
-           var students = SqlDataAccess.Search("SELECT FirstName,LastName FROM Students WHERE FirstName=@FirstName AND LastName=@LastName", student);
-
-            if(students.Count ==0)
-            {
-              AddStudent(student);
-            }
-            else
-            {
-                MessageBox.Show($"There are {students.Count} students with name {student.FirstName} {student.LastName}");
-            }
-        }
         public static void AddStudent(Student student)
         {
-            student.FirstName = InputFormat(student.FirstName);
-            student.LastName = InputFormat(student.LastName);
-
             string sql = @"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
                           VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)";
 
              SqlDataAccess.ManipulateData(sql, student);
 
              MessageBox.Show("Student added successfully");
+        }
+
+        public static void DeleteStudent(int Id)
+        {
+            var student = new Student { ID = Id };
+
+            SqlDataAccess.ManipulateData<Student>("DELETE FROM Students WHERE ID=@ID", student);
+
+            MessageBox.Show("Student deleted successfully");
+        }
+
+        public static List<Student> ViewStudents() => SqlDataAccess.LoadData<Student>("SELECT * FROM Students ORDER BY LastName");
+
+        public static void EditStudent(Student student)
+        {
+            string sql = (@"UPDATE Students SET FirstName=@FirstName,LastName=@LastName,Email=@Email,
+                            Phone=@Phone,BirthDate=@BirthDate,IsSubscribed=@IsSubscribed WHERE ID=@ID");
+
+            SqlDataAccess.ManipulateData<Student>(sql, student);
+
+            MessageBox.Show("Student updated successfully");
         }
     }
 }

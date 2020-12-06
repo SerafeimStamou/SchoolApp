@@ -42,6 +42,7 @@ namespace SchoolApp.Forms
             this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isSubscribedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.EditBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@ namespace SchoolApp.Forms
             // 
             // ExitProgram
             // 
-            this.ExitProgram.Location = new System.Drawing.Point(1238, 390);
+            this.ExitProgram.Location = new System.Drawing.Point(1371, 390);
             this.ExitProgram.Name = "ExitProgram";
             this.ExitProgram.Size = new System.Drawing.Size(109, 60);
             this.ExitProgram.TabIndex = 4;
@@ -78,13 +79,14 @@ namespace SchoolApp.Forms
             this.phoneDataGridViewTextBoxColumn,
             this.birthDateDataGridViewTextBoxColumn,
             this.isSubscribedDataGridViewCheckBoxColumn,
-            this.EditBtn});
+            this.EditBtn,
+            this.DeleteBtn});
             this.StudentsTable.DataSource = this.studentBindingSource;
             this.StudentsTable.Location = new System.Drawing.Point(2, 1);
             this.StudentsTable.Name = "StudentsTable";
             this.StudentsTable.RowHeadersWidth = 51;
             this.StudentsTable.RowTemplate.Height = 24;
-            this.StudentsTable.Size = new System.Drawing.Size(1345, 383);
+            this.StudentsTable.Size = new System.Drawing.Size(1478, 383);
             this.StudentsTable.TabIndex = 5;
             this.StudentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentsTable_CellContentClick);
             // 
@@ -158,11 +160,21 @@ namespace SchoolApp.Forms
             this.EditBtn.UseColumnTextForButtonValue = true;
             this.EditBtn.Width = 125;
             // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.DataPropertyName = "ID";
+            this.DeleteBtn.HeaderText = "";
+            this.DeleteBtn.MinimumWidth = 6;
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseColumnTextForButtonValue = true;
+            this.DeleteBtn.Width = 125;
+            // 
             // ViewStudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1349, 450);
+            this.ClientSize = new System.Drawing.Size(1478, 450);
             this.Controls.Add(this.StudentsTable);
             this.Controls.Add(this.ExitProgram);
             this.Controls.Add(this.MainFormBtn);
@@ -188,5 +200,6 @@ namespace SchoolApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isSubscribedDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteBtn;
     }
 }
