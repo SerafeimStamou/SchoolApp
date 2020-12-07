@@ -1,17 +1,15 @@
-﻿using SchoolApp.Models;
+﻿
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using static DataLibrary.StudentProcessor;
 using static DataLibrary.Helper;
-using DataLibrary.DataAccess;
 
 namespace SchoolApp.Forms
 {
     public partial class AddStudentForm : Form
     {
         int Id=0;
-        bool isNewEntry = true;
+
         public AddStudentForm()
         {
           InitializeComponent();
@@ -38,7 +36,7 @@ namespace SchoolApp.Forms
         {
           
             CreateStudent(Id,FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
-            PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked,isNewEntry);
+            PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked);
         }
 
         private void ClearValuesBtn_Click(object sender, EventArgs e) => ClearValues();

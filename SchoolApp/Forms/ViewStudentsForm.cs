@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
 using static DataLibrary.StudentProcessor;
-using static DataLibrary.DataAccess.SqlDataAccess;
-using SchoolApp.Models;
+
 
 namespace SchoolApp.Forms
 {
@@ -12,7 +12,7 @@ namespace SchoolApp.Forms
         public ViewStudentsForm()
         {
           InitializeComponent();
-          StudentsTable.DataSource = ViewStudents();
+          StudentsTable.DataSource =ViewStudents();
         }
 
         private void MainFormBtn_Click(object sender, EventArgs e)
@@ -51,6 +51,61 @@ namespace SchoolApp.Forms
 
                     StudentsTable.DataSource = ViewStudents();
                 }
+            }
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e) => Search();
+        
+        private void SearchTxtBox_TextChanged(object sender, EventArgs e) {}
+        
+        private void Search()
+        {
+            if(!String.IsNullOrEmpty(SearchTxtBox.Text))
+            {
+                if(ByLastName.Checked==true)
+              StudentsTable.DataSource = ViewStudents().Where(s=>s.LastName.Equals(SearchTxtBox.Text)).ToList();
+
+                if(ByEmail.Checked==true)
+              StudentsTable.DataSource = ViewStudents().Where(s => s.Email.Equals(SearchTxtBox.Text)).ToList();
+
+                if(ByPhone.Checked==true)
+              StudentsTable.DataSource = ViewStudents().Where(s => s.Phone.Equals(SearchTxtBox.Text)).ToList();
+            }
+        }
+
+        private void ViewAllBtn_Click(object sender, EventArgs e)
+        {
+            StudentsTable.DataSource = ViewStudents();
+            SearchTxtBox.Clear();
+            ByLastName.Checked = false;
+            ByEmail.Checked = false;
+            ByPhone.Checked = false;
+        }
+
+        private void ByLastName_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ByLastName.Checked==true)
+            {
+                ByEmail.Checked = false;
+                ByPhone.Checked = false;
+            }
+        }
+
+        private void ByEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ByEmail.Checked == true)
+            {
+                ByLastName.Checked = false;
+                ByPhone.Checked = false;
+            }
+        }
+
+        private void ByPhone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ByPhone.Checked == true)
+            {
+                ByLastName.Checked = false;
+                ByEmail.Checked = false;
             }
         }
     }

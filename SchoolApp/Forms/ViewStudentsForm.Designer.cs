@@ -33,7 +33,6 @@ namespace SchoolApp.Forms
             this.MainFormBtn = new System.Windows.Forms.Button();
             this.ExitProgram = new System.Windows.Forms.Button();
             this.StudentsTable = new System.Windows.Forms.DataGridView();
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,13 +42,20 @@ namespace SchoolApp.Forms
             this.isSubscribedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.EditBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.SearchTxtBox = new System.Windows.Forms.TextBox();
+            this.ViewAllBtn = new System.Windows.Forms.Button();
+            this.ByLastName = new System.Windows.Forms.CheckBox();
+            this.ByEmail = new System.Windows.Forms.CheckBox();
+            this.ByPhone = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MainFormBtn
             // 
-            this.MainFormBtn.Location = new System.Drawing.Point(2, 390);
+            this.MainFormBtn.Location = new System.Drawing.Point(2, 427);
             this.MainFormBtn.Name = "MainFormBtn";
             this.MainFormBtn.Size = new System.Drawing.Size(109, 60);
             this.MainFormBtn.TabIndex = 3;
@@ -59,7 +65,7 @@ namespace SchoolApp.Forms
             // 
             // ExitProgram
             // 
-            this.ExitProgram.Location = new System.Drawing.Point(1371, 390);
+            this.ExitProgram.Location = new System.Drawing.Point(1371, 427);
             this.ExitProgram.Name = "ExitProgram";
             this.ExitProgram.Size = new System.Drawing.Size(109, 60);
             this.ExitProgram.TabIndex = 4;
@@ -82,17 +88,13 @@ namespace SchoolApp.Forms
             this.EditBtn,
             this.DeleteBtn});
             this.StudentsTable.DataSource = this.studentBindingSource;
-            this.StudentsTable.Location = new System.Drawing.Point(2, 1);
+            this.StudentsTable.Location = new System.Drawing.Point(2, 38);
             this.StudentsTable.Name = "StudentsTable";
             this.StudentsTable.RowHeadersWidth = 51;
             this.StudentsTable.RowTemplate.Height = 24;
             this.StudentsTable.Size = new System.Drawing.Size(1478, 383);
             this.StudentsTable.TabIndex = 5;
             this.StudentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentsTable_CellContentClick);
-            // 
-            // studentBindingSource
-            // 
-            this.studentBindingSource.DataSource = typeof(SchoolApp.Models.Student);
             // 
             // ID
             // 
@@ -170,11 +172,82 @@ namespace SchoolApp.Forms
             this.DeleteBtn.UseColumnTextForButtonValue = true;
             this.DeleteBtn.Width = 125;
             // 
+            // studentBindingSource
+            // 
+            this.studentBindingSource.DataSource = typeof(SchoolApp.Models.Student);
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(2, 4);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(75, 28);
+            this.SearchBtn.TabIndex = 6;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
+            // SearchTxtBox
+            // 
+            this.SearchTxtBox.Location = new System.Drawing.Point(96, 7);
+            this.SearchTxtBox.Name = "SearchTxtBox";
+            this.SearchTxtBox.Size = new System.Drawing.Size(147, 22);
+            this.SearchTxtBox.TabIndex = 7;
+            this.SearchTxtBox.TextChanged += new System.EventHandler(this.SearchTxtBox_TextChanged);
+            // 
+            // ViewAllBtn
+            // 
+            this.ViewAllBtn.Location = new System.Drawing.Point(673, 427);
+            this.ViewAllBtn.Name = "ViewAllBtn";
+            this.ViewAllBtn.Size = new System.Drawing.Size(109, 60);
+            this.ViewAllBtn.TabIndex = 8;
+            this.ViewAllBtn.Text = "View All Students";
+            this.ViewAllBtn.UseVisualStyleBackColor = true;
+            this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
+            // 
+            // ByLastName
+            // 
+            this.ByLastName.AutoSize = true;
+            this.ByLastName.Location = new System.Drawing.Point(282, 8);
+            this.ByLastName.Name = "ByLastName";
+            this.ByLastName.Size = new System.Drawing.Size(167, 21);
+            this.ByLastName.TabIndex = 12;
+            this.ByLastName.Text = "Search By Last Name";
+            this.ByLastName.UseVisualStyleBackColor = true;
+            this.ByLastName.CheckedChanged += new System.EventHandler(this.ByLastName_CheckedChanged);
+            // 
+            // ByEmail
+            // 
+            this.ByEmail.AutoSize = true;
+            this.ByEmail.Location = new System.Drawing.Point(490, 8);
+            this.ByEmail.Name = "ByEmail";
+            this.ByEmail.Size = new System.Drawing.Size(133, 21);
+            this.ByEmail.TabIndex = 13;
+            this.ByEmail.Text = "Search By Email";
+            this.ByEmail.UseVisualStyleBackColor = true;
+            this.ByEmail.CheckedChanged += new System.EventHandler(this.ByEmail_CheckedChanged);
+            // 
+            // ByPhone
+            // 
+            this.ByPhone.AutoSize = true;
+            this.ByPhone.Location = new System.Drawing.Point(662, 9);
+            this.ByPhone.Name = "ByPhone";
+            this.ByPhone.Size = new System.Drawing.Size(140, 21);
+            this.ByPhone.TabIndex = 14;
+            this.ByPhone.Text = "Search By Phone";
+            this.ByPhone.UseVisualStyleBackColor = true;
+            this.ByPhone.CheckedChanged += new System.EventHandler(this.ByPhone_CheckedChanged);
+            // 
             // ViewStudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1478, 450);
+            this.ClientSize = new System.Drawing.Size(1478, 499);
+            this.Controls.Add(this.ByPhone);
+            this.Controls.Add(this.ByEmail);
+            this.Controls.Add(this.ByLastName);
+            this.Controls.Add(this.ViewAllBtn);
+            this.Controls.Add(this.SearchTxtBox);
+            this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.StudentsTable);
             this.Controls.Add(this.ExitProgram);
             this.Controls.Add(this.MainFormBtn);
@@ -183,6 +256,7 @@ namespace SchoolApp.Forms
             ((System.ComponentModel.ISupportInitialize)(this.StudentsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,5 +275,11 @@ namespace SchoolApp.Forms
         private System.Windows.Forms.DataGridViewCheckBoxColumn isSubscribedDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditBtn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteBtn;
+        private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.TextBox SearchTxtBox;
+        private System.Windows.Forms.Button ViewAllBtn;
+        private System.Windows.Forms.CheckBox ByLastName;
+        private System.Windows.Forms.CheckBox ByEmail;
+        private System.Windows.Forms.CheckBox ByPhone;
     }
 }

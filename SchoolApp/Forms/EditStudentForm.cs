@@ -8,7 +8,7 @@ namespace SchoolApp.Forms
     public partial class EditStudentForm : Form
     {
         int ID;
-        bool isNewEntry = false;
+       
         public EditStudentForm(int Id,string firstName,string lastName,string email,string phone,DateTime birthDate,bool isSubscribed)
         {
             InitializeComponent();
@@ -21,18 +21,18 @@ namespace SchoolApp.Forms
             SubscribeCheckBox.Checked = isSubscribed;
             ID = Id;
         }
-
+        #region
         private void FirstNameTxtBox_TextChanged(object sender, EventArgs e) {}
         private void LastNameTxtBox_TextChanged(object sender, EventArgs e) {}
         private void EmailTxtBox_TextChanged(object sender, EventArgs e){}
         private void PhoneTxtBox_TextChanged(object sender, EventArgs e){}
         private void BirthDateDTPicker_ValueChanged(object sender, EventArgs e){}
         private void SubscribeCheckBox_CheckedChanged(object sender, EventArgs e) {}
-
+        #endregion
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             CreateStudent(ID,FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
-            PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked,isNewEntry);
+            PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked);
         }
 
         private void ClearValuesBtn_Click(object sender, EventArgs e) => ClearValues();

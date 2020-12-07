@@ -4,7 +4,6 @@ using FluentValidation.Results;
 using SchoolApp.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
 
@@ -13,7 +12,7 @@ namespace DataLibrary
     public static class StudentProcessor
     {
         public static void CreateStudent(int Id,string firstName, string lastName, string email,
-               string phone, DateTime birthDate, bool isSubscribed,bool isNewEntry)
+               string phone, DateTime birthDate, bool isSubscribed)
         {
             var student = new Student
             {
@@ -26,10 +25,10 @@ namespace DataLibrary
                 IsSubscribed = isSubscribed
             };
 
-             StudentValidation(student,isNewEntry);
+             StudentValidation(student);
         }
 
-        public static void StudentValidation(Student student,bool isNewEntry)
+        public static void StudentValidation(Student student)
         {
 
             var validator = new StudentValidator();
@@ -38,7 +37,7 @@ namespace DataLibrary
 
             if (results.IsValid == true)
             {
-                if (isNewEntry == true)
+                if (student.ID == 0)
                     AddStudent(student);
                 else
                     EditStudent(student);
