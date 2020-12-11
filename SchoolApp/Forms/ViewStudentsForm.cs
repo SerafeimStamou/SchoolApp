@@ -4,15 +4,15 @@ using System.Windows.Forms;
 using static DataLibrary.Helper;
 using static DataLibrary.StudentProcessor;
 
-
 namespace SchoolApp.Forms
 {
     public partial class ViewStudentsForm : Form
     {
+        
         public ViewStudentsForm()
         {
           InitializeComponent();
-          StudentsTable.DataSource =ViewStudents();
+          StudentsTable.DataSource = ViewStudents();
         }
 
         private void MainFormBtn_Click(object sender, EventArgs e)
@@ -27,35 +27,45 @@ namespace SchoolApp.Forms
         {
             if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("EditBtn"))
             {
-                int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
-                string firstName = StudentsTable.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string lastName = StudentsTable.Rows[e.RowIndex].Cells[2].Value.ToString();
-                string email = StudentsTable.Rows[e.RowIndex].Cells[3].Value.ToString();
-                string phone = StudentsTable.Rows[e.RowIndex].Cells[4].Value.ToString();
-                DateTime birthDate = Convert.ToDateTime(StudentsTable.Rows[e.RowIndex].Cells[5].Value);
-                bool isSubscribed = Convert.ToBoolean(StudentsTable.Rows[e.RowIndex].Cells[6].Value);
-
-                var editStudentForm = new EditStudentForm(Id,firstName,lastName,email,phone,birthDate,isSubscribed);
-
-                LoadForm(editStudentForm, this);
+                LoadEditForm(sender, e);
             }
 
             if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("DeleteBtn"))
             {
-                if (MessageBox.Show("Do you want to delete this student?", "Message",
-                              MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
+                DeleteRecord(sender, e);
+            }
+        }
 
-                    DeleteStudent(Id);
+        private void LoadEditForm(object sender, DataGridViewCellEventArgs e)
+        {
+            int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
+            string firstName = StudentsTable.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string lastName = StudentsTable.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string email = StudentsTable.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string phone = StudentsTable.Rows[e.RowIndex].Cells[4].Value.ToString();
+            DateTime birthDate = Convert.ToDateTime(StudentsTable.Rows[e.RowIndex].Cells[5].Value);
+            bool isSubscribed = Convert.ToBoolean(StudentsTable.Rows[e.RowIndex].Cells[6].Value);
 
-                    StudentsTable.DataSource = ViewStudents();
-                }
+            var editStudentForm = new EditStudentForm(Id, firstName, lastName, email, phone, birthDate, isSubscribed);
+
+            LoadForm(editStudentForm, this);
+        }
+
+        private void DeleteRecord(object sender, DataGridViewCellEventArgs e)
+        {
+            if (MessageBox.Show("Do you want to delete this student?", "Message",
+                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
+
+                DeleteStudent(Id);
+
+                StudentsTable.DataSource = ViewStudents();
             }
         }
 
         private void SearchBtn_Click(object sender, EventArgs e) => Search();
-        
+
         private void SearchTxtBox_TextChanged(object sender, EventArgs e) {}
         
         private void Search()

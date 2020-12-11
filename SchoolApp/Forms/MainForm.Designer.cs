@@ -32,6 +32,7 @@ namespace SchoolApp
             this.ExitProgram = new System.Windows.Forms.Button();
             this.AddStudentBtn = new System.Windows.Forms.Button();
             this.ViewStudentsBtn = new System.Windows.Forms.Button();
+            this.ViewCoursesBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitProgram
@@ -64,11 +65,22 @@ namespace SchoolApp
             this.ViewStudentsBtn.UseVisualStyleBackColor = true;
             this.ViewStudentsBtn.Click += new System.EventHandler(this.ViewStudentsBtn_Click);
             // 
+            // ViewCoursesBtn
+            // 
+            this.ViewCoursesBtn.Location = new System.Drawing.Point(284, 141);
+            this.ViewCoursesBtn.Name = "ViewCoursesBtn";
+            this.ViewCoursesBtn.Size = new System.Drawing.Size(109, 60);
+            this.ViewCoursesBtn.TabIndex = 3;
+            this.ViewCoursesBtn.Text = "View Courses";
+            this.ViewCoursesBtn.UseVisualStyleBackColor = true;
+            this.ViewCoursesBtn.Click += new System.EventHandler(this.ViewCoursesBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ViewCoursesBtn);
             this.Controls.Add(this.ViewStudentsBtn);
             this.Controls.Add(this.AddStudentBtn);
             this.Controls.Add(this.ExitProgram);
@@ -83,6 +95,7 @@ namespace SchoolApp
         private System.Windows.Forms.Button ExitProgram;
         private System.Windows.Forms.Button AddStudentBtn;
         private System.Windows.Forms.Button ViewStudentsBtn;
+        private System.Windows.Forms.Button ViewCoursesBtn;
     }
 }
 

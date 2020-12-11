@@ -80,6 +80,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewCoursesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewCoursesForm.Designer.cs">
+      <DependentUpon>ViewCoursesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewStudentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewCoursesForm.resx">
+      <DependentUpon>ViewCoursesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewStudentsForm.resx">
       <DependentUpon>ViewStudentsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +121,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DataLibrary.DataAccess.SqlDataAccess.datasource" />
     <None Include="Properties\DataSources\DataLibrary.Helper.datasource" />
+    <None Include="Properties\DataSources\DataLibrary.Models.Course.datasource" />
     <None Include="Properties\DataSources\DataLibrary.StudentProcessor.datasource" />
     <None Include="Properties\DataSources\DataLibrary.Validators.StudentValidator.datasource" />
     <None Include="Properties\DataSources\SchoolApp.Models.Student.datasource" />
