@@ -25,3 +25,5 @@ C:\SchoolApp\SchoolApp\bin\Debug\FluentValidation.xml
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.ViewStudentsForm.resources
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.EditStudentForm.resources
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.ViewCoursesForm.resources
+C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.Enrollments.resources
+C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.EnrollForm.resources

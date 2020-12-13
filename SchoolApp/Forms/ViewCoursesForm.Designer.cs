@@ -78,7 +78,7 @@ namespace SchoolApp.Forms
             this.CoursesTable.Name = "CoursesTable";
             this.CoursesTable.RowHeadersWidth = 51;
             this.CoursesTable.RowTemplate.Height = 24;
-            this.CoursesTable.Size = new System.Drawing.Size(472, 281);
+            this.CoursesTable.Size = new System.Drawing.Size(431, 281);
             this.CoursesTable.TabIndex = 4;
             this.CoursesTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CoursesTable_CellContentClick);
             // 

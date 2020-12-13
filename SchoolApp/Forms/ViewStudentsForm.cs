@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SchoolApp.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
@@ -8,11 +10,18 @@ namespace SchoolApp.Forms
 {
     public partial class ViewStudentsForm : Form
     {
-        
+        List<Student> students = new List<Student>();
         public ViewStudentsForm()
         {
           InitializeComponent();
-          StudentsTable.DataSource = ViewStudents();
+
+           LoadStudents();
+        }
+
+        private void LoadStudents()
+        {
+            students = ViewStudents();
+            StudentsTable.DataSource = students;
         }
 
         private void MainFormBtn_Click(object sender, EventArgs e)
@@ -25,6 +34,11 @@ namespace SchoolApp.Forms
 
         private void StudentsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("EnrollBtn"))
+            {
+                LoadEnrollForm(sender,e);
+            }
+
             if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("EditBtn"))
             {
                 LoadEditForm(sender, e);
@@ -36,8 +50,19 @@ namespace SchoolApp.Forms
             }
         }
 
+        private void LoadEnrollForm(object sender, DataGridViewCellEventArgs e)
+        {
+            #region
+            int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
+            string firstName = StudentsTable.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string lastName = StudentsTable.Rows[e.RowIndex].Cells[2].Value.ToString();
+            #endregion
+            var enrollForm = new EnrollForm(Id,firstName,lastName);
+            LoadForm(enrollForm, this);
+        }
         private void LoadEditForm(object sender, DataGridViewCellEventArgs e)
         {
+            #region 
             int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
             string firstName = StudentsTable.Rows[e.RowIndex].Cells[1].Value.ToString();
             string lastName = StudentsTable.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -45,7 +70,7 @@ namespace SchoolApp.Forms
             string phone = StudentsTable.Rows[e.RowIndex].Cells[4].Value.ToString();
             DateTime birthDate = Convert.ToDateTime(StudentsTable.Rows[e.RowIndex].Cells[5].Value);
             bool isSubscribed = Convert.ToBoolean(StudentsTable.Rows[e.RowIndex].Cells[6].Value);
-
+            #endregion  
             var editStudentForm = new EditStudentForm(Id, firstName, lastName, email, phone, birthDate, isSubscribed);
 
             LoadForm(editStudentForm, this);
@@ -60,7 +85,7 @@ namespace SchoolApp.Forms
 
                 DeleteStudent(Id);
 
-                StudentsTable.DataSource = ViewStudents();
+                LoadStudents();
             }
         }
 
@@ -73,23 +98,24 @@ namespace SchoolApp.Forms
             if(!String.IsNullOrEmpty(SearchTxtBox.Text))
             {
                 if(ByLastName.Checked==true)
-              StudentsTable.DataSource = ViewStudents().Where(s=>s.LastName.Equals(SearchTxtBox.Text)).ToList();
+              StudentsTable.DataSource = students.Where(s=>s.LastName.Equals(SearchTxtBox.Text)).ToList();
 
                 if(ByEmail.Checked==true)
-              StudentsTable.DataSource = ViewStudents().Where(s => s.Email.Equals(SearchTxtBox.Text)).ToList();
+              StudentsTable.DataSource = students.Where(s => s.Email.Equals(SearchTxtBox.Text)).ToList();
 
                 if(ByPhone.Checked==true)
-              StudentsTable.DataSource = ViewStudents().Where(s => s.Phone.Equals(SearchTxtBox.Text)).ToList();
+              StudentsTable.DataSource = students.Where(s => s.Phone.Equals(SearchTxtBox.Text)).ToList();
             }
         }
 
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
-            StudentsTable.DataSource = ViewStudents();
             SearchTxtBox.Clear();
             ByLastName.Checked = false;
             ByEmail.Checked = false;
             ByPhone.Checked = false;
+
+            LoadStudents();
         }
 
         private void ByLastName_CheckedChanged(object sender, EventArgs e)

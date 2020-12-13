@@ -10,7 +10,8 @@ namespace SchoolApp.Forms
         public ViewCoursesForm()
         {
             InitializeComponent();
-            CoursesTable.DataSource = ViewCourses();
+
+            LoadCourses();
         }
 
         private void ExitProgram_Click(object sender, EventArgs e) => Application.Exit();
@@ -21,9 +22,11 @@ namespace SchoolApp.Forms
             LoadForm(mainForm, this);
         }
 
-        private void CoursesTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void CoursesTable_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
+        private void LoadCourses()
+        {
+           CoursesTable.DataSource = ViewCourses();
         }
     }
 }

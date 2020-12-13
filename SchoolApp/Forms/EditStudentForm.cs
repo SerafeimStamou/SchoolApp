@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolApp.Models;
+using System;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
 using static DataLibrary.StudentProcessor;
@@ -8,7 +9,7 @@ namespace SchoolApp.Forms
     public partial class EditStudentForm : Form
     {
         int ID;
-       
+        Student student = new Student();
         public EditStudentForm(int Id,string firstName,string lastName,string email,string phone,DateTime birthDate,bool isSubscribed)
         {
             InitializeComponent();
@@ -31,11 +32,19 @@ namespace SchoolApp.Forms
         #endregion
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            CreateStudent(ID,FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
+            student.CreateStudent(ID,FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
             PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked);
         }
 
-        private void ClearValuesBtn_Click(object sender, EventArgs e) => ClearValues();
+        private void ClearValuesBtn_Click(object sender, EventArgs e)
+        {
+            FirstNameTxtBox.Clear();
+            LastNameTxtBox.Clear();
+            EmailTxtBox.Clear();
+            PhoneTxtBox.Clear();
+            BirthDateDTPicker.ResetText();
+            SubscribeCheckBox.Checked = false;
+        }
 
         private void ExitProgram_Click(object sender, EventArgs e) => Application.Exit();
         
@@ -49,16 +58,6 @@ namespace SchoolApp.Forms
         {
             var viewStudentsForm = new ViewStudentsForm();
             LoadForm(viewStudentsForm, this);
-        }
-
-        private void ClearValues()
-        {
-            FirstNameTxtBox.Clear();
-            LastNameTxtBox.Clear();
-            EmailTxtBox.Clear();
-            PhoneTxtBox.Clear();
-            BirthDateDTPicker.ResetText();
-            SubscribeCheckBox.Checked = false;
         }
     }
 }

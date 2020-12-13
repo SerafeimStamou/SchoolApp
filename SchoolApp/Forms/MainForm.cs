@@ -31,5 +31,11 @@ namespace SchoolApp
             var viewCoursesForm = new ViewCoursesForm();
             LoadForm(viewCoursesForm, this);
         }
+
+        private void ViewEnrollmentsBtn_Click(object sender, EventArgs e)
+        {
+            var enrollments = new Enrollments();
+            LoadForm(enrollments, this);
+        }
     }
 }

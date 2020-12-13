@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace DataLibrary
@@ -8,7 +7,7 @@ namespace DataLibrary
     {
         public static string InputFormat(string input)
         {
-            if (!String.IsNullOrEmpty(input))
+            if (!string.IsNullOrEmpty(input))
                 return input.ToUpper().First() + input.Substring(1).ToLower();
             else
                 return "";

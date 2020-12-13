@@ -33,15 +33,6 @@ namespace SchoolApp.Forms
             this.MainFormBtn = new System.Windows.Forms.Button();
             this.ExitProgram = new System.Windows.Forms.Button();
             this.StudentsTable = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isSubscribedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.EditBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SearchBtn = new System.Windows.Forms.Button();
             this.SearchTxtBox = new System.Windows.Forms.TextBox();
@@ -49,6 +40,16 @@ namespace SchoolApp.Forms
             this.ByLastName = new System.Windows.Forms.CheckBox();
             this.ByEmail = new System.Windows.Forms.CheckBox();
             this.ByPhone = new System.Windows.Forms.CheckBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isSubscribedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.EnrollBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EditBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +86,7 @@ namespace SchoolApp.Forms
             this.phoneDataGridViewTextBoxColumn,
             this.birthDateDataGridViewTextBoxColumn,
             this.isSubscribedDataGridViewCheckBoxColumn,
+            this.EnrollBtn,
             this.EditBtn,
             this.DeleteBtn});
             this.StudentsTable.DataSource = this.studentBindingSource;
@@ -95,82 +97,6 @@ namespace SchoolApp.Forms
             this.StudentsTable.Size = new System.Drawing.Size(1478, 383);
             this.StudentsTable.TabIndex = 5;
             this.StudentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentsTable_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 125;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lastNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // birthDateDataGridViewTextBoxColumn
-            // 
-            this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.HeaderText = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
-            this.birthDateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // isSubscribedDataGridViewCheckBoxColumn
-            // 
-            this.isSubscribedDataGridViewCheckBoxColumn.DataPropertyName = "IsSubscribed";
-            this.isSubscribedDataGridViewCheckBoxColumn.HeaderText = "IsSubscribed";
-            this.isSubscribedDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            this.isSubscribedDataGridViewCheckBoxColumn.Name = "isSubscribedDataGridViewCheckBoxColumn";
-            this.isSubscribedDataGridViewCheckBoxColumn.Width = 125;
-            // 
-            // EditBtn
-            // 
-            this.EditBtn.HeaderText = "";
-            this.EditBtn.MinimumWidth = 6;
-            this.EditBtn.Name = "EditBtn";
-            this.EditBtn.Text = "Edit";
-            this.EditBtn.UseColumnTextForButtonValue = true;
-            this.EditBtn.Width = 125;
-            // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.DataPropertyName = "ID";
-            this.DeleteBtn.HeaderText = "";
-            this.DeleteBtn.MinimumWidth = 6;
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseColumnTextForButtonValue = true;
-            this.DeleteBtn.Width = 125;
             // 
             // studentBindingSource
             // 
@@ -237,6 +163,91 @@ namespace SchoolApp.Forms
             this.ByPhone.UseVisualStyleBackColor = true;
             this.ByPhone.CheckedChanged += new System.EventHandler(this.ByPhone_CheckedChanged);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 125;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lastNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // birthDateDataGridViewTextBoxColumn
+            // 
+            this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
+            this.birthDateDataGridViewTextBoxColumn.HeaderText = "BirthDate";
+            this.birthDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
+            this.birthDateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // isSubscribedDataGridViewCheckBoxColumn
+            // 
+            this.isSubscribedDataGridViewCheckBoxColumn.DataPropertyName = "IsSubscribed";
+            this.isSubscribedDataGridViewCheckBoxColumn.HeaderText = "IsSubscribed";
+            this.isSubscribedDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            this.isSubscribedDataGridViewCheckBoxColumn.Name = "isSubscribedDataGridViewCheckBoxColumn";
+            this.isSubscribedDataGridViewCheckBoxColumn.Width = 125;
+            // 
+            // EnrollBtn
+            // 
+            this.EnrollBtn.HeaderText = "";
+            this.EnrollBtn.MinimumWidth = 6;
+            this.EnrollBtn.Name = "EnrollBtn";
+            this.EnrollBtn.Text = "Enroll";
+            this.EnrollBtn.UseColumnTextForButtonValue = true;
+            this.EnrollBtn.Width = 125;
+            // 
+            // EditBtn
+            // 
+            this.EditBtn.HeaderText = "";
+            this.EditBtn.MinimumWidth = 6;
+            this.EditBtn.Name = "EditBtn";
+            this.EditBtn.Text = "Edit";
+            this.EditBtn.UseColumnTextForButtonValue = true;
+            this.EditBtn.Width = 125;
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.DataPropertyName = "ID";
+            this.DeleteBtn.HeaderText = "";
+            this.DeleteBtn.MinimumWidth = 6;
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseColumnTextForButtonValue = true;
+            this.DeleteBtn.Width = 125;
+            // 
             // ViewStudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -266,6 +277,12 @@ namespace SchoolApp.Forms
         private System.Windows.Forms.Button ExitProgram;
         private System.Windows.Forms.DataGridView StudentsTable;
         private System.Windows.Forms.BindingSource studentBindingSource;
+        private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.TextBox SearchTxtBox;
+        private System.Windows.Forms.Button ViewAllBtn;
+        private System.Windows.Forms.CheckBox ByLastName;
+        private System.Windows.Forms.CheckBox ByEmail;
+        private System.Windows.Forms.CheckBox ByPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
@@ -273,13 +290,8 @@ namespace SchoolApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isSubscribedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn EnrollBtn;
         private System.Windows.Forms.DataGridViewButtonColumn EditBtn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteBtn;
-        private System.Windows.Forms.Button SearchBtn;
-        private System.Windows.Forms.TextBox SearchTxtBox;
-        private System.Windows.Forms.Button ViewAllBtn;
-        private System.Windows.Forms.CheckBox ByLastName;
-        private System.Windows.Forms.CheckBox ByEmail;
-        private System.Windows.Forms.CheckBox ByPhone;
     }
 }

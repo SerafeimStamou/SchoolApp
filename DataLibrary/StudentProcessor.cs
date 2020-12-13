@@ -2,32 +2,13 @@
 using DataLibrary.Validators;
 using FluentValidation.Results;
 using SchoolApp.Models;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static DataLibrary.Helper;
 
 namespace DataLibrary
 {
     public static class StudentProcessor
     {
-        public static void CreateStudent(int Id,string firstName, string lastName, string email,
-               string phone, DateTime birthDate, bool isSubscribed)
-        {
-            var student = new Student
-            {
-                ID=Id,
-                FirstName = InputFormat(firstName),
-                LastName =  InputFormat(lastName),
-                Email = email,
-                Phone = phone,
-                BirthDate = birthDate,
-                IsSubscribed = isSubscribed
-            };
-
-             StudentValidation(student);
-        }
-
         public static void StudentValidation(Student student)
         {
 
@@ -63,9 +44,9 @@ namespace DataLibrary
 
         public static void DeleteStudent(int Id)
         {
-            var student = new Student { ID = Id };
+            var student = new Student();
 
-            SqlDataAccess.ManipulateData<Student>("DELETE FROM Students WHERE ID=@ID", student);
+            SqlDataAccess.ManipulateData($"DELETE FROM Students WHERE ID={Id}", student);
 
             MessageBox.Show("Student deleted successfully");
         }
