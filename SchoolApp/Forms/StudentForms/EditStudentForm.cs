@@ -2,7 +2,6 @@
 using System;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
-using static DataLibrary.StudentProcessor;
 
 namespace SchoolApp.Forms
 {

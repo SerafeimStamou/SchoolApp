@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Forms;
+using SchoolApp.Forms.TeacherForms;
 using System;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
@@ -36,6 +37,18 @@ namespace SchoolApp
         {
             var enrollments = new Enrollments();
             LoadForm(enrollments, this);
+        }
+
+        private void AddTeacherBtn_Click(object sender, EventArgs e)
+        {
+            var addTeacherForm = new AddTeacherForm();
+            LoadForm(addTeacherForm, this);
+        }
+
+        private void ViewTeachersBtn_Click(object sender, EventArgs e)
+        {
+            var viewTeachersForm = new ViewTeachersForm();
+            LoadForm(viewTeachersForm, this);
         }
     }
 }

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
-using static DataLibrary.StudentProcessor;
+using static DataLibrary.DataAccess.SqlDataAccess;
 
 namespace SchoolApp.Forms
 {
     public partial class ViewStudentsForm : Form
     {
         List<Student> students = new List<Student>();
+        Student student = new Student();
         public ViewStudentsForm()
         {
           InitializeComponent();
@@ -20,8 +21,9 @@ namespace SchoolApp.Forms
 
         private void LoadStudents()
         {
-            students = ViewStudents();
+            students = Read<Student>("SELECT * FROM Students");
             StudentsTable.DataSource = students;
+            NumberOfStudentsLabel.Text = "Total number of students:" + " " + students.Count.ToString();
         }
 
         private void MainFormBtn_Click(object sender, EventArgs e)
@@ -83,7 +85,7 @@ namespace SchoolApp.Forms
             {
                 int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
 
-                DeleteStudent(Id);
+                Delete(Id,student);
 
                 LoadStudents();
             }
@@ -91,8 +93,6 @@ namespace SchoolApp.Forms
 
         private void SearchBtn_Click(object sender, EventArgs e) => Search();
 
-        private void SearchTxtBox_TextChanged(object sender, EventArgs e) {}
-        
         private void Search()
         {
             if(!String.IsNullOrEmpty(SearchTxtBox.Text))
@@ -144,5 +144,8 @@ namespace SchoolApp.Forms
                 ByEmail.Checked = false;
             }
         }
+
+        private void SearchTxtBox_TextChanged(object sender, EventArgs e) { }
+        private void NumberOfStudentsLabel_Click(object sender, EventArgs e) { }
     }
 }

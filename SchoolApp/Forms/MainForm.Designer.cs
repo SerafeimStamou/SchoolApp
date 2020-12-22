@@ -34,6 +34,8 @@ namespace SchoolApp
             this.ViewStudentsBtn = new System.Windows.Forms.Button();
             this.ViewCoursesBtn = new System.Windows.Forms.Button();
             this.ViewEnrollmentsBtn = new System.Windows.Forms.Button();
+            this.AddTeacherBtn = new System.Windows.Forms.Button();
+            this.ViewTeachersBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitProgram
@@ -86,11 +88,33 @@ namespace SchoolApp
             this.ViewEnrollmentsBtn.UseVisualStyleBackColor = true;
             this.ViewEnrollmentsBtn.Click += new System.EventHandler(this.ViewEnrollmentsBtn_Click);
             // 
+            // AddTeacherBtn
+            // 
+            this.AddTeacherBtn.Location = new System.Drawing.Point(482, 23);
+            this.AddTeacherBtn.Name = "AddTeacherBtn";
+            this.AddTeacherBtn.Size = new System.Drawing.Size(109, 60);
+            this.AddTeacherBtn.TabIndex = 5;
+            this.AddTeacherBtn.Text = "Add Teacher";
+            this.AddTeacherBtn.UseVisualStyleBackColor = true;
+            this.AddTeacherBtn.Click += new System.EventHandler(this.AddTeacherBtn_Click);
+            // 
+            // ViewTeachersBtn
+            // 
+            this.ViewTeachersBtn.Location = new System.Drawing.Point(482, 141);
+            this.ViewTeachersBtn.Name = "ViewTeachersBtn";
+            this.ViewTeachersBtn.Size = new System.Drawing.Size(109, 60);
+            this.ViewTeachersBtn.TabIndex = 6;
+            this.ViewTeachersBtn.Text = "View Teachers";
+            this.ViewTeachersBtn.UseVisualStyleBackColor = true;
+            this.ViewTeachersBtn.Click += new System.EventHandler(this.ViewTeachersBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ViewTeachersBtn);
+            this.Controls.Add(this.AddTeacherBtn);
             this.Controls.Add(this.ViewEnrollmentsBtn);
             this.Controls.Add(this.ViewCoursesBtn);
             this.Controls.Add(this.ViewStudentsBtn);
@@ -109,6 +133,8 @@ namespace SchoolApp
         private System.Windows.Forms.Button ViewStudentsBtn;
         private System.Windows.Forms.Button ViewCoursesBtn;
         private System.Windows.Forms.Button ViewEnrollmentsBtn;
+        private System.Windows.Forms.Button AddTeacherBtn;
+        private System.Windows.Forms.Button ViewTeachersBtn;
     }
 }
 

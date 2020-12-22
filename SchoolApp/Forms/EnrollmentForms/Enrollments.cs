@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
-using static DataLibrary.EnrollmentProcessor;
+using DataLibrary.Models;
 
 namespace SchoolApp.Forms
 {
+   
     public partial class Enrollments : Form
     {
+        Enrollment enrollment = new Enrollment();
         public Enrollments()
         {
             InitializeComponent();
-            EnrollmentsTable.DataSource = ViewEnrollments();
+            EnrollmentsTable.DataSource = enrollment.ViewEnrollments();
         }
 
         private void MainFormBtn_Click(object sender, EventArgs e)

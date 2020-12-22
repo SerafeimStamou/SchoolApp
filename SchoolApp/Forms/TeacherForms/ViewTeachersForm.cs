@@ -4,16 +4,14 @@ using static DataLibrary.Helper;
 using static DataLibrary.DataAccess.SqlDataAccess;
 using DataLibrary.Models;
 
-namespace SchoolApp.Forms
+namespace SchoolApp.Forms.TeacherForms
 {
-    public partial class ViewCoursesForm : Form
+    public partial class ViewTeachersForm : Form
     {
-        
-        public ViewCoursesForm()
+        public ViewTeachersForm()
         {
             InitializeComponent();
-
-            LoadCourses();
+            TeachersTable.DataSource = Read<Teacher>("SELECT ID,FirstName,LastName,Email,Phone FROM Teachers");
         }
 
         private void ExitProgram_Click(object sender, EventArgs e) => Application.Exit();
@@ -24,12 +22,6 @@ namespace SchoolApp.Forms
             LoadForm(mainForm, this);
         }
 
-        private void CoursesTable_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
-        private void LoadCourses()
-        {
-            var course = new Course();
-           CoursesTable.DataSource = Read<Course>("SELECT * FROM Courses");
-        }
+        private void TeachersTable_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
 }

@@ -1,13 +1,12 @@
-﻿using FluentValidation;
-using SchoolApp.Models;
-using System;
+﻿using DataLibrary.Models;
+using FluentValidation;
 using System.Linq;
 
 namespace DataLibrary.Validators
 {
-    public class StudentValidator:AbstractValidator<Student>
+     public class TeacherValidator:AbstractValidator<Teacher>
     {
-        public StudentValidator()
+        public TeacherValidator()
         {
             RuleFor(s => s.FirstName).Cascade(CascadeMode.Stop)
                                      .NotEmpty()
@@ -24,19 +23,9 @@ namespace DataLibrary.Validators
             RuleFor(s => s.Phone).Cascade(CascadeMode.Stop)
                                  .NotEmpty()
                                  .Must(HasOnlyDigits).WithMessage("Phone must have only digits");
-
-            RuleFor(s => s.BirthDate).Must(ValidYear).WithMessage("Please enter a valid date");
         }
 
         private bool HasOnlyLetters(string name) => name.All(char.IsLetter);
-
-        private bool ValidYear(DateTime date)
-        {
-            int currentYear = DateTime.Now.Year;
-            int dateOfBirth = date.Year;
-
-            return dateOfBirth < currentYear && dateOfBirth > (currentYear - 120);
-        }
 
         private bool HasOnlyDigits(string phone) => phone.All(char.IsDigit);
     }
