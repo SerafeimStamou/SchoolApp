@@ -1,28 +1,22 @@
 ﻿using DataLibrary.Validators;
 using System;
-using static DataLibrary.DataAccess.SqlDataAccess;
-using static DataLibrary.Helper;
 using FluentValidation.Results;
 using System.Windows.Forms;
-using System.Linq;
-using System.Collections.Generic;
+using static DataLibrary.DataAccess.SqlDataAccess;
+using static DataLibrary.Helper;
+using static DataLibrary.DataAccess.CRUDOperations;
+
 
 namespace SchoolApp.Models
 {
     public class Student
     {
         public int ID { get; private set; }
-
         public string FirstName { get; private set; }
-
         public string LastName { get; private set; }
-
         public string Email { get; private set; }
-
         public string Phone { get; private set; }
-
         public DateTime BirthDate { get; private set; }
-
         public bool IsSubscribed { get; private set; }
 
         public  void CreateStudent(int Id, string firstName, string lastName, string email,
@@ -63,15 +57,6 @@ namespace SchoolApp.Models
             }
         }
 
-        public List<Student> CheckIfStudentExists(Student student)
-        {
-            var dbStudents = Read<Student>("SELECT FirstName,LastName,Email,Phone FROM Students");
-
-            return dbStudents.Where(s => s.FirstName.Equals(student.FirstName) && s.LastName.Equals(student.LastName)
-                           && (s.Email.Equals(student.Email) || s.Phone.Equals(student.Phone))).ToList();
-                              
-        }
-
         public void SaveStudentToDatabase(Student student)
         {
             bool isValid = StudentValidation(student);
@@ -80,22 +65,27 @@ namespace SchoolApp.Models
             {
                 if (student.ID == 0)
                 {
-                    var result = CheckIfStudentExists(student);
+                    var result = CheckForDuplicates(@"SELECT ID FROM Students WHERE FirstName=@FirstName AND LastName=@LastName
+                                                     AND (Email=@Email OR Phone=@Phone)",student);
 
-                    if (result.Count == 0)
+                    if (result == 0)
                     {
                         Create(@"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
-                           VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)", student);
+                               VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)", student);
+                    }
+                    else if(result >0)
+                    {
+                        MessageBox.Show("Student already exists");
                     }
                     else
                     {
-                        MessageBox.Show("Student already exists");
+                       return;
                     }
                 }
                 else
                 {
-                    Update(@"UPDATE Students SET FirstName=@FirstName,LastName=@LastName,Email=@Email,
-                            Phone=@Phone,BirthDate=@BirthDate,IsSubscribed=@IsSubscribed WHERE ID=@ID", student);
+                   Update(@"UPDATE Students SET FirstName=@FirstName,LastName=@LastName,Email=@Email,
+                           Phone=@Phone,BirthDate=@BirthDate,IsSubscribed=@IsSubscribed WHERE ID=@ID", student);
                 }
             }
         }

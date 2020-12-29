@@ -33,10 +33,10 @@ namespace SchoolApp.Forms
             this.MainFormBtn = new System.Windows.Forms.Button();
             this.ExitProgram = new System.Windows.Forms.Button();
             this.EnrollmentsTable = new System.Windows.Forms.DataGridView();
-            this.enrollmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enrollmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.EnrollmentsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enrollmentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -78,16 +78,13 @@ namespace SchoolApp.Forms
             this.EnrollmentsTable.TabIndex = 6;
             this.EnrollmentsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EnrollmentsTable_CellContentClick);
             // 
-            // enrollmentBindingSource
-            // 
-            this.enrollmentBindingSource.DataSource = typeof(DataLibrary.Models.Enrollment);
-            // 
             // titleDataGridViewTextBoxColumn
             // 
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
             this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             this.titleDataGridViewTextBoxColumn.Width = 125;
             // 
             // firstNameDataGridViewTextBoxColumn
@@ -96,6 +93,7 @@ namespace SchoolApp.Forms
             this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
             this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.firstNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // lastNameDataGridViewTextBoxColumn
@@ -104,7 +102,12 @@ namespace SchoolApp.Forms
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
             this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.lastNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // enrollmentBindingSource
+            // 
+            this.enrollmentBindingSource.DataSource = typeof(DataLibrary.Models.Enrollment);
             // 
             // Enrollments
             // 
@@ -116,6 +119,7 @@ namespace SchoolApp.Forms
             this.Controls.Add(this.MainFormBtn);
             this.Name = "Enrollments";
             this.Text = "Enrollments";
+            this.Load += new System.EventHandler(this.Enrollments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EnrollmentsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enrollmentBindingSource)).EndInit();
             this.ResumeLayout(false);

@@ -1,70 +1,88 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using Dapper;
-using SchoolApp.Models;
 
 namespace DataLibrary.DataAccess
 {
     public static class SqlDataAccess
     {
-      public static string GetConnectionString(string connectionName="School")=> ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
-
-           public static List<T> LoadData<T>(string sql)
-           {
-             using(IDbConnection conn=new SqlConnection(GetConnectionString()))
-             {
-                return conn.Query<T>(sql).ToList();
-             }
-           }
-
-        public static int ManipulateData<T>(string sql,T data)
+        public static string GetConnectionString(string connectionName = "School")
         {
-            using (IDbConnection conn = new SqlConnection(GetConnectionString()))
+           return ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
+        }
+
+        public static int ManipulateData<T>(string query,T model)
+        {
+            IDbConnection conn = new SqlConnection(GetConnectionString());
+
+            try
             {
-                return conn.Execute(sql,data);
+               return conn.Execute(query, model);
+            }
+            catch(Exception ex)
+            {
+               MessageBox.Show(ex.Message);
+               return 0;
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }  
+        }
+
+        public static List<T> LoadData<T>(string query)
+        {
+            IDbConnection conn = new SqlConnection(GetConnectionString());
+
+            try
+            {
+                return conn.Query<T>(query).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
         }
 
-        public static void Create<T>(string sql,T model)
-        {
-           ManipulateData(sql, model);
+         public static int CheckForDuplicates<T>(string query,T model)
+         {
+            IDbConnection conn = new SqlConnection(GetConnectionString());
 
-           if (model is Student)
-              MessageBox.Show("Student added successfully");
-           else
-               MessageBox.Show("Teacher added successfully");
-            
-        }
-
-        public static List<T> Read<T>(string sql) => LoadData<T>(sql);
-
-        public static void Update<T>(string sql,T model)
-        {
-            ManipulateData(sql, model);
-
-            if (model is Student)
-                MessageBox.Show("Student updated successfully");
-            else
-                MessageBox.Show("Teacher updated successfully");
-        }
-
-        public static void Delete<T>(int Id,T model)
-        {
-
-            if (model is Student)
+            try
             {
-                ManipulateData($"DELETE FROM Students WHERE ID={Id}", model);
-                MessageBox.Show("Student deleted successfully");
+               return conn.Query<T>(query, model).Count();
             }
-            else
+            catch(Exception ex)
             {
-                ManipulateData($"DELETE FROM Teachers WHERE ID={Id}", model);
-                MessageBox.Show("Teacher deleted successfully");
+                MessageBox.Show(ex.Message);
+                return -1;
             }
-        }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            } 
+         }
     }
 }

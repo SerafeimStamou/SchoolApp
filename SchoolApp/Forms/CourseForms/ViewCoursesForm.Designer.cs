@@ -78,7 +78,7 @@ namespace SchoolApp.Forms
             this.CoursesTable.Name = "CoursesTable";
             this.CoursesTable.RowHeadersWidth = 51;
             this.CoursesTable.RowTemplate.Height = 24;
-            this.CoursesTable.Size = new System.Drawing.Size(431, 281);
+            this.CoursesTable.Size = new System.Drawing.Size(567, 281);
             this.CoursesTable.TabIndex = 4;
             this.CoursesTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CoursesTable_CellContentClick);
             // 
@@ -88,6 +88,7 @@ namespace SchoolApp.Forms
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn.Width = 125;
             // 
             // titleDataGridViewTextBoxColumn
@@ -96,6 +97,7 @@ namespace SchoolApp.Forms
             this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             this.titleDataGridViewTextBoxColumn.Width = 125;
             // 
             // hoursPerWeekDataGridViewTextBoxColumn
@@ -104,6 +106,7 @@ namespace SchoolApp.Forms
             this.hoursPerWeekDataGridViewTextBoxColumn.HeaderText = "HoursPerWeek";
             this.hoursPerWeekDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.hoursPerWeekDataGridViewTextBoxColumn.Name = "hoursPerWeekDataGridViewTextBoxColumn";
+            this.hoursPerWeekDataGridViewTextBoxColumn.ReadOnly = true;
             this.hoursPerWeekDataGridViewTextBoxColumn.Width = 125;
             // 
             // ViewCoursesForm

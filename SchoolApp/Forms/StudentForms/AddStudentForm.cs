@@ -33,7 +33,6 @@ namespace SchoolApp.Forms
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-          
             student.CreateStudent(Id,FirstNameTxtBox.Text, LastNameTxtBox.Text, EmailTxtBox.Text,
             PhoneTxtBox.Text, BirthDateDTPicker.Value, SubscribeCheckBox.Checked);
         }

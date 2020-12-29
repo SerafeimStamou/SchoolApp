@@ -29,3 +29,4 @@ C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.Enrollments.resources
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.EnrollForm.resources
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.TeacherForms.AddTeacherForm.resources
 C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.TeacherForms.ViewTeachersForm.resources
+C:\SchoolApp\SchoolApp\obj\Debug\SchoolApp.Forms.TeacherForms.EditTeacherForm.resources

@@ -2,9 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static DataLibrary.Helper;
-using static DataLibrary.DataAccess.SqlDataAccess;
 using System.Linq;
+using static DataLibrary.Helper;
+using static DataLibrary.DataAccess.CRUDOperations;
+
 
 namespace SchoolApp.Forms.TeacherForms
 {
@@ -14,7 +15,7 @@ namespace SchoolApp.Forms.TeacherForms
         Teacher teacher = new Teacher();
         int courseId;
         int ID = 0;
-        Course course = new Course();
+        
         public AddTeacherForm()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace SchoolApp.Forms.TeacherForms
 
         private void LoadCourses()
         {
-            courses = Read<Course>("SELECT * FROM Courses");
+            courses = Read<Course>("SELECT ID,Title FROM Courses");
             CoursesListBox.DataSource = courses.Select(c => c.Title).ToList();
         }
 

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
-using static DataLibrary.DataAccess.SqlDataAccess;
 using DataLibrary.Models;
+using static DataLibrary.DataAccess.CRUDOperations;
+
 
 namespace SchoolApp.Forms
 {
@@ -13,7 +14,7 @@ namespace SchoolApp.Forms
         {
             InitializeComponent();
 
-            LoadCourses();
+            CoursesTable.DataSource = Read<Course>("SELECT * FROM Courses");
         }
 
         private void ExitProgram_Click(object sender, EventArgs e) => Application.Exit();
@@ -25,11 +26,5 @@ namespace SchoolApp.Forms
         }
 
         private void CoursesTable_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
-        private void LoadCourses()
-        {
-            var course = new Course();
-           CoursesTable.DataSource = Read<Course>("SELECT * FROM Courses");
-        }
     }
 }

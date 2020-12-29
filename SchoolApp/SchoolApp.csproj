@@ -110,6 +110,12 @@
     <Compile Include="Forms\TeacherForms\AddTeacherForm.Designer.cs">
       <DependentUpon>AddTeacherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TeacherForms\EditTeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TeacherForms\EditTeacherForm.Designer.cs">
+      <DependentUpon>EditTeacherForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TeacherForms\ViewTeachersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TeacherForms\AddTeacherForm.resx">
       <DependentUpon>AddTeacherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TeacherForms\EditTeacherForm.resx">
+      <DependentUpon>EditTeacherForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TeacherForms\ViewTeachersForm.resx">
       <DependentUpon>ViewTeachersForm.cs</DependentUpon>

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using static DataLibrary.DataAccess.SqlDataAccess;
+using static DataLibrary.DataAccess.CRUDOperations;
 using static DataLibrary.Helper;
 
 namespace SchoolApp.Forms
@@ -13,7 +13,6 @@ namespace SchoolApp.Forms
         List<Course> courses = new List<Course>();
         List<Enrollment> enrollments = new List<Enrollment>();
         int studentID;
-        Course course = new Course();
         Enrollment enrollment = new Enrollment();
 
         public EnrollForm(int Id,string firstName,string lastName)
@@ -51,7 +50,9 @@ namespace SchoolApp.Forms
 
         private void LoadEnrollments(int Id)
         {
-            enrollments = enrollment.ViewEnrollments();
+            enrollments = Read<Enrollment>(@"select Title,FirstName,LastName,Enrollments.StudentID from Students inner Join Enrollments 
+                     on Students.ID=Enrollments.StudentID inner join Courses ON Enrollments.CourseID = Courses.ID ORDER BY Title,LastName");
+
             CoursesThatAlreadyFollowsList.DataSource = enrollments
                                                 .Where(e => e.StudentID == Id).Select(c => c.Title).ToList();
         }
@@ -61,7 +62,7 @@ namespace SchoolApp.Forms
             string title = CoursesThatAlreadyFollowsList.SelectedItem.ToString();
             int courseID = courses.Where(c => c.Title.Equals(title)).Select(c => c.ID).SingleOrDefault();
 
-            enrollment.RemoveCourse(studentID, courseID);
+            Delete($"DELETE FROM Enrollments WHERE StudentID={studentID} AND CourseID={courseID}", enrollment);
 
             LoadEnrollments(studentID);
         }
@@ -69,11 +70,26 @@ namespace SchoolApp.Forms
         private void AddCourseBtn_Click(object sender, EventArgs e)
         {
             string title = CourseList.SelectedItem.ToString();
-            int courseID = courses.Where(c => c.Title.Equals(title)).Select(c => c.ID).SingleOrDefault();
 
-            enrollment.AddCourse(studentID,courseID);
+            var items = new List<string>();
 
-            LoadEnrollments(studentID);
+            foreach (var item in CoursesThatAlreadyFollowsList.Items)
+            {
+                items.Add(item.ToString());
+            }
+
+            if (items.Contains(title))
+            {
+                MessageBox.Show("Student already follows this course");
+            }
+            else
+            {
+                int courseID = courses.Where(c => c.Title.Equals(title)).Select(c => c.ID).SingleOrDefault();
+
+                Create($"INSERT INTO Enrollments(StudentID,CourseID) VALUES ({studentID},{courseID})",enrollment);
+
+                LoadEnrollments(studentID);
+            }
         }
 
         #region

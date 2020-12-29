@@ -4,25 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
-using static DataLibrary.DataAccess.SqlDataAccess;
+using static DataLibrary.DataAccess.CRUDOperations;
 
 namespace SchoolApp.Forms
 {
     public partial class ViewStudentsForm : Form
     {
         List<Student> students = new List<Student>();
-        Student student = new Student();
+        
         public ViewStudentsForm()
         {
           InitializeComponent();
 
-           LoadStudents();
+          LoadStudents();
         }
 
         private void LoadStudents()
         {
             students = Read<Student>("SELECT * FROM Students");
             StudentsTable.DataSource = students;
+
+            if(students !=null)
             NumberOfStudentsLabel.Text = "Total number of students:" + " " + students.Count.ToString();
         }
 
@@ -40,13 +42,11 @@ namespace SchoolApp.Forms
             {
                 LoadEnrollForm(sender,e);
             }
-
-            if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("EditBtn"))
+            else if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("EditBtn"))
             {
                 LoadEditForm(sender, e);
             }
-
-            if (StudentsTable.Columns[e.ColumnIndex].Name.Equals("DeleteBtn"))
+            else
             {
                 DeleteRecord(sender, e);
             }
@@ -80,12 +80,14 @@ namespace SchoolApp.Forms
 
         private void DeleteRecord(object sender, DataGridViewCellEventArgs e)
         {
+            Student student = new Student();
+
             if (MessageBox.Show("Do you want to delete this student?", "Message",
                              MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
 
-                Delete(Id,student);
+                Delete($"DELETE FROM Students WHERE ID={Id}",student);
 
                 LoadStudents();
             }
