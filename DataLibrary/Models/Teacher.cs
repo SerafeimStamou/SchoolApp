@@ -67,10 +67,18 @@ namespace DataLibrary.Models
                                                      AND (Email=@Email OR Phone=@Phone)",teacher);
 
                     if (result == 0)
+                    {
                         Create(@"INSERT INTO Teachers(FirstName,LastName,Email,Phone,CourseID)
-                                VALUES(@FirstName,@LastName,@Email,@Phone,@CourseID)",teacher);
-                    else
+                                VALUES(@FirstName,@LastName,@Email,@Phone,@CourseID)", teacher);
+                    }
+                    else if (result > 0)
+                    {
                         MessageBox.Show("Teacher already exists");
+                    }
+                    else
+                    {
+                       return;
+                    }
                 }
                 else
                 {
