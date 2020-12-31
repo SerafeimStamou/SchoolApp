@@ -62,7 +62,7 @@ namespace SchoolApp.Forms
             string title = CoursesThatAlreadyFollowsList.SelectedItem.ToString();
             int courseID = courses.Where(c => c.Title.Equals(title)).Select(c => c.ID).SingleOrDefault();
 
-            Delete($"DELETE FROM Enrollments WHERE StudentID={studentID} AND CourseID={courseID}", enrollment);
+            Delete($"DELETE FROM Enrollments WHERE StudentID={studentID} AND CourseID={courseID}", enrollment,false);
 
             LoadEnrollments(studentID);
         }
@@ -86,7 +86,7 @@ namespace SchoolApp.Forms
             {
                 int courseID = courses.Where(c => c.Title.Equals(title)).Select(c => c.ID).SingleOrDefault();
 
-                Create($"INSERT INTO Enrollments(StudentID,CourseID) VALUES ({studentID},{courseID})",enrollment);
+                Create($"INSERT INTO Enrollments(StudentID,CourseID) VALUES ({studentID},{courseID})",enrollment,false);
 
                 LoadEnrollments(studentID);
             }

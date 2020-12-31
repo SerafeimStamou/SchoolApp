@@ -87,7 +87,7 @@ namespace SchoolApp.Forms
             {
                 int Id = Convert.ToInt32(StudentsTable.Rows[e.RowIndex].Cells[0].Value);
 
-                Delete($"DELETE FROM Students WHERE ID={Id}",student);
+                Delete($"DELETE FROM Students WHERE ID={Id}",student,true);
 
                 LoadStudents();
             }

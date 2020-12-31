@@ -59,7 +59,7 @@ namespace SchoolApp.Forms.TeacherForms
             {
                 int Id = Convert.ToInt32(ViewTeachersTable.Rows[e.RowIndex].Cells[0].Value);
 
-                Delete($"DELETE FROM Teachers WHERE ID={Id}",teacher);
+                Delete($"DELETE FROM Teachers WHERE ID={Id}",teacher,true);
 
                 ViewTeachersTable.DataSource = Read<Teacher>(@"SELECT Teachers.ID,FirstName,LastName,Email,Phone,Courses.Title AS Teaches FROM Teachers
                                                INNER JOIN Courses ON Teachers.CourseID=Courses.ID");

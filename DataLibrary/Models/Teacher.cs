@@ -1,5 +1,4 @@
 ﻿using DataLibrary.Validators;
-using FluentValidation.Results;
 using System.Windows.Forms;
 using static DataLibrary.Helper;
 using static DataLibrary.DataAccess.SqlDataAccess;
@@ -34,30 +33,10 @@ namespace DataLibrary.Models
             SaveTeacherToDatabase(teacher);
         }
 
-        public bool TeacherValidation(Teacher teacher)
-        {
-            var validator = new TeacherValidator();
-
-            ValidationResult results = validator.Validate(teacher);
-
-            if (results.IsValid == true)
-            {
-                return true;
-            }
-            else
-            {
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
-                }
-
-                return false;
-            }
-        }
-
         public void SaveTeacherToDatabase(Teacher teacher)
         {
-            bool isValid = TeacherValidation(teacher);
+            var validator = new TeacherValidator();
+            bool isValid = validator.TeacherValidation(teacher);
 
             if(isValid)
             {
@@ -66,25 +45,30 @@ namespace DataLibrary.Models
                     var result = CheckForDuplicates(@"SELECT ID FROM Teachers WHERE FirstName=@FirstName AND LastName=@LastName
                                                      AND (Email=@Email OR Phone=@Phone)",teacher);
 
-                    if (result == 0)
-                    {
-                        Create(@"INSERT INTO Teachers(FirstName,LastName,Email,Phone,CourseID)
-                                VALUES(@FirstName,@LastName,@Email,@Phone,@CourseID)", teacher);
-                    }
-                    else if (result > 0)
-                    {
-                        MessageBox.Show("Teacher already exists");
-                    }
-                    else
-                    {
-                       return;
-                    }
+                    Insert(result, teacher);
                 }
                 else
                 {
                    Update(@"UPDATE Teachers SET FirstName=@FirstName,LastName=@LastName,Email=@Email,
-                          Phone=@Phone,CourseID=@CourseID WHERE ID=@ID", teacher);
+                          Phone=@Phone,CourseID=@CourseID WHERE ID=@ID", teacher,true);
                 }
+            }
+        }
+
+        public void Insert(int result,Teacher teacher)
+        {
+            if (result == 0)
+            {
+                Create(@"INSERT INTO Teachers(FirstName,LastName,Email,Phone,CourseID)
+                                VALUES(@FirstName,@LastName,@Email,@Phone,@CourseID)", teacher,true);
+            }
+            else if (result > 0)
+            {
+                MessageBox.Show("Teacher already exists");
+            }
+            else
+            {
+                return;
             }
         }
     }

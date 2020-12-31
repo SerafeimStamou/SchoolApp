@@ -1,6 +1,5 @@
 ﻿using DataLibrary.Validators;
 using System;
-using FluentValidation.Results;
 using System.Windows.Forms;
 using static DataLibrary.DataAccess.SqlDataAccess;
 using static DataLibrary.Helper;
@@ -20,7 +19,7 @@ namespace SchoolApp.Models
         public bool IsSubscribed { get; private set; }
 
         public  void CreateStudent(int Id, string firstName, string lastName, string email,
-              string phone, DateTime birthDate, bool isSubscribed)
+                                    string phone, DateTime birthDate, bool isSubscribed)
         {
             var student = new Student
             {
@@ -36,30 +35,10 @@ namespace SchoolApp.Models
             SaveStudentToDatabase(student);
         }
 
-        public bool StudentValidation(Student student)
-        {
-            var validator = new StudentValidator();
-
-            ValidationResult results = validator.Validate(student);
-
-            if (results.IsValid == true)
-            {
-                return true;
-            }
-            else
-            {
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    MessageBox.Show($"{failure.PropertyName}: {failure.ErrorMessage}");
-                }
-
-                return false;
-            }
-        }
-
         public void SaveStudentToDatabase(Student student)
         {
-            bool isValid = StudentValidation(student);
+            var validator = new StudentValidator();
+            bool isValid = validator.StudentValidation(student);
 
             if(isValid)
             {
@@ -68,25 +47,30 @@ namespace SchoolApp.Models
                     var result = CheckForDuplicates(@"SELECT ID FROM Students WHERE FirstName=@FirstName AND LastName=@LastName
                                                      AND (Email=@Email OR Phone=@Phone)",student);
 
-                    if (result == 0)
-                    {
-                        Create(@"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
-                               VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)", student);
-                    }
-                    else if(result >0)
-                    {
-                        MessageBox.Show("Student already exists");
-                    }
-                    else
-                    {
-                       return;
-                    }
+                    Insert(result, student); 
                 }
                 else
                 {
                    Update(@"UPDATE Students SET FirstName=@FirstName,LastName=@LastName,Email=@Email,
-                           Phone=@Phone,BirthDate=@BirthDate,IsSubscribed=@IsSubscribed WHERE ID=@ID", student);
+                           Phone=@Phone,BirthDate=@BirthDate,IsSubscribed=@IsSubscribed WHERE ID=@ID", student,true);
                 }
+            }
+        }
+
+        public void Insert(int result,Student student)
+        {
+            if (result == 0)
+            {
+                Create(@"INSERT INTO Students(FirstName,LastName,Email,Phone,BirthDate,IsSubscribed)
+                               VALUES(@FirstName,@LastName,@Email,@Phone,@BirthDate,@IsSubscribed)", student,true);
+            }
+            else if (result > 0)
+            {
+                MessageBox.Show("Student already exists");
+            }
+            else
+            {
+                return;
             }
         }
     }
