@@ -65,7 +65,7 @@ namespace DataLibrary.DataAccess
          public static int CheckForDuplicates<T>(string query,T model)
          {
             IDbConnection conn = new SqlConnection(GetConnectionString());
-
+            
             try
             {
                return conn.Query<T>(query, model).Count();
